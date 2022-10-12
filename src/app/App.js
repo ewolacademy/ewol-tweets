@@ -1,5 +1,8 @@
+import "./global-styles.css";
+import RegisterPage from "./pages/Register";
+
 function App() {
-  return <div className="App">Hola mundo!</div>;
+  return <RegisterPage />;
 }
 
 export default App;
