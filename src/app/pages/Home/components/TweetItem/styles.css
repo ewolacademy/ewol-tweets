@@ -54,8 +54,13 @@
   box-sizing: border-box;
 }
 
-.tweet-body > textarea {
-  border: 0;
+.tweet-container textarea {
+  border-width: 0px;
+  resize: none;
+  outline: none;
+  font-family: "Nunito";
+  font-size: 14px;
+  margin-top: 5px 0 10px;
 }
 
 .tweet-body > span {
@@ -67,7 +72,6 @@
 .tweet-footer {
   width: 100%;
   display: flex;
-  padding: 0 10px;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
@@ -79,4 +83,5 @@
   font-weight: 300;
   font-size: 12px;
   color: #555;
+  margin-right: 10px;
 }

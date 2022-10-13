@@ -26,3 +26,12 @@
   padding: 50px 20px;
   position: relative;
 }
+
+.error-message {
+  font-family: "Nunito";
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  color: #d50000;
+  margin-bottom: 15px;
+}

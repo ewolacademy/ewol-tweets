@@ -33,7 +33,10 @@ const TweetItem = ({
   return (
     <div className="tweet-container">
       <div className="tweet-header">
-        <img src={user.photo} alt={`${user.name}-profile`} />
+        <img
+          src={user.photo?.base64 ?? user.photo}
+          alt={`${user.name}-profile`}
+        />
         <span>{user.name}</span>
       </div>
       {createMode ? (
