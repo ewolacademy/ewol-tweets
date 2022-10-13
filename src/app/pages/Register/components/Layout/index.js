@@ -1,6 +1,7 @@
 import { useContext } from "react";
-import { postTweet } from "../../../../../api/tweets";
+import { registerUser } from "../../../../../api/users";
 import Card from "../../../../components/Card";
+import LoadingOverlay from "../../../../components/loaders/LoadingOverlay";
 import Logo from "../../../../components/Logo";
 import AppContext from "../../../../contexts/AppContext";
 import RegisterForm from "../RegisterForm";
@@ -10,6 +11,7 @@ const RegisterLayout = () => {
   const { data: appData, setData: setAppData } = useContext(AppContext);
 
   const handleSubmit = async (formData) => {
+    registerUser(formData.name, formData.photo);
     setAppData({
       ...appData,
       ...formData,
@@ -20,6 +22,7 @@ const RegisterLayout = () => {
     <div className="register-layout-container">
       <Logo width={200} />
       <Card className="card">
+        <LoadingOverlay />
         <span className="title">Bienvenidxs!</span>
         <span className="subtitle">Regístrate para poder twittear</span>
         <RegisterForm onSubmit={handleSubmit} />
