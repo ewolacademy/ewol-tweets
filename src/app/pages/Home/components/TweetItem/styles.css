@@ -20,7 +20,12 @@
   content: "";
 }
 
-.tweet-container:hover {
+.tweet-container.focus {
+  border: 3px solid rgb(169, 0, 221);
+}
+
+.tweet-container:hover,
+.tweet-container.focus {
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.15);
 }
 
@@ -39,7 +44,8 @@
   overflow: hidden;
   object-fit: cover;
   object-position: center;
-  margin-right: 5px;
+  margin-right: 8px;
+  border: 1px solid #999;
 }
 
 .tweet-header > span {
@@ -56,6 +62,7 @@
 
 .tweet-container textarea {
   border-width: 0px;
+  max-height: 250px;
   resize: none;
   outline: none;
   font-family: "Nunito";
