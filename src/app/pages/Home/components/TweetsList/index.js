@@ -13,7 +13,7 @@ const TweetsList = ({ list = [], loading, error }) => {
   }
 
   return (
-    <div className="tweets-list-container">
+    <div>
       {list.map((item, index) => (
         <TweetItem key={index} {...item} />
       ))}

@@ -4,6 +4,6 @@ html {
 }
 
 .tweets-list-container {
-  width: 600px !important;
-  margin: 20px auto;
+  width: 600px;
+  margin: 110px auto;
 }

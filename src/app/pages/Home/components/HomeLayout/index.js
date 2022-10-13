@@ -3,6 +3,7 @@ import TweetsList from "../TweetsList";
 import TweetItem from "../TweetItem";
 import AppContext from "../../../../contexts/AppContext";
 import "./styles.css";
+import Navbar from "../../../../components/Navbar";
 
 const problemsMock = [
   {
@@ -50,10 +51,13 @@ const problemsMock = [
 const HomeLayout = ({ problems }) => {
   const { data: appData } = useContext(AppContext);
   return (
-    <div className="tweets-list-container">
-      <TweetItem createMode user={appData.user} onPublish={console.log} />
-      <TweetsList {...problems} list={problemsMock} />
-    </div>
+    <>
+      <Navbar />
+      <div className="tweets-list-container">
+        <TweetItem createMode user={appData.user} onPublish={console.log} />
+        <TweetsList {...problems} list={problemsMock} />
+      </div>
+    </>
   );
 };
 
