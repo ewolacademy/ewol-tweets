@@ -1,37 +1,28 @@
 import { useContext } from "react";
+import { postTweet } from "../../../../../api/tweets";
 import Card from "../../../../components/Card";
+import Logo from "../../../../components/Logo";
 import AppContext from "../../../../contexts/AppContext";
 import RegisterForm from "../RegisterForm";
-import UserWelcome from "../UserWelcome";
 import "./styles.css";
 
 const RegisterLayout = () => {
   const { data: appData, setData: setAppData } = useContext(AppContext);
 
-  const handleSubmit = (formData) => {
+  const handleSubmit = async (formData) => {
     setAppData({
       ...appData,
       ...formData,
     });
   };
 
-  const handleLogout = () => {
-    setAppData({
-      ...appData,
-      name: undefined,
-    });
-  };
-
   return (
     <div className="register-layout-container">
-      <Card>
-        {appData.name ? (
-          <>
-            <UserWelcome name={appData.name} onLogout={handleLogout} />
-          </>
-        ) : (
-          <RegisterForm onSubmit={handleSubmit} />
-        )}
+      <Logo width={200} />
+      <Card className="card">
+        <span className="title">Bienvenidxs!</span>
+        <span className="subtitle">Regístrate para poder twittear</span>
+        <RegisterForm onSubmit={handleSubmit} />
       </Card>
     </div>
   );

@@ -1,6 +1,8 @@
 // Firebase App (the core Firebase SDK) is always required and
 // must be listed before other Firebase SDKs
-import * as firebase from "firebase/app";
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+import { getStorage, ref } from "firebase/storage";
 
 // Add the Firebase services that you want to use
 import "firebase/firestore";
@@ -16,9 +18,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const firebaseApp = firebase.initializeApp(firebaseConfig);
+const firebaseApp = initializeApp(firebaseConfig);
 
-export const db = {
-  firestore: firebaseApp.firestore(),
-  storage: firebase.storage().ref(),
-};
+export const firestore = getFirestore(firebaseApp);
+export const storage = getStorage(firebaseApp);
