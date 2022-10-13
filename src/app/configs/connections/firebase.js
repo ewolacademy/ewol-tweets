@@ -2,7 +2,7 @@
 // must be listed before other Firebase SDKs
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { getStorage, ref } from "firebase/storage";
+import { getStorage } from "firebase/storage";
 
 // Add the Firebase services that you want to use
 import "firebase/firestore";

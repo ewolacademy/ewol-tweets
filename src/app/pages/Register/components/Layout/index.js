@@ -22,7 +22,7 @@ const RegisterLayout = () => {
     <div className="register-layout-container">
       <Logo width={200} />
       <Card className="card">
-        <LoadingOverlay />
+        <LoadingOverlay visible />
         <span className="title">Bienvenidxs!</span>
         <span className="subtitle">Regístrate para poder twittear</span>
         <RegisterForm onSubmit={handleSubmit} />
