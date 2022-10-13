@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { registerUser } from "../../../../../api/users";
 import Card from "../../../../components/Card";
 import LoadingOverlay from "../../../../components/loaders/LoadingOverlay";
@@ -9,20 +9,25 @@ import "./styles.css";
 
 const RegisterLayout = () => {
   const { data: appData, setData: setAppData } = useContext(AppContext);
+  const [submitLoading, setSubmitLoading] = useState(false);
 
   const handleSubmit = async (formData) => {
-    registerUser(formData.name, formData.photo);
-    setAppData({
-      ...appData,
-      ...formData,
-    });
+    const { name, photo } = formData;
+    setSubmitLoading(true);
+    await registerUser(name, photo);
+    setSubmitLoading(false);
+
+    // setAppData({
+    //   ...appData,
+    //   ...formData,
+    // });
   };
 
   return (
     <div className="register-layout-container">
       <Logo width={200} />
       <Card className="card">
-        <LoadingOverlay visible />
+        <LoadingOverlay visible={submitLoading} />
         <span className="title">Bienvenidxs!</span>
         <span className="subtitle">Regístrate para poder twittear</span>
         <RegisterForm onSubmit={handleSubmit} />

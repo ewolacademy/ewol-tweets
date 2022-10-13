@@ -6,8 +6,8 @@ import RegisterPage from "./pages/Register";
 function App() {
   return (
     <AppContextProvider>
-      {/* <RegisterPage /> */}
-      <HomePage />
+      <RegisterPage />
+      {/* <HomePage /> */}
     </AppContextProvider>
   );
 }
