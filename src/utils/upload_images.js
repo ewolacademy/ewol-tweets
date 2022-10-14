@@ -73,7 +73,7 @@ export const downScaleCanvas = async (
   let resCV;
 
   if (scale < 1 && scale > 0) {
-    var sqScale = scale * scale; // square scale = area of source pixel within target
+    // var sqScale = scale * scale; // square scale = area of source pixel within target
     var sw = cv.width; // source image width
     var sh = cv.height; // source image height
     var tw =
@@ -102,7 +102,7 @@ export const downScaleCanvas = async (
 export const compressImage = async (canvas, imgConfigs) => {
   let jpegDataURL = canvas.toDataURL("image/jpeg", imgConfigs.maxQuality);
   let quality;
-  const initialSize = getBase64Size(jpegDataURL, "KB");
+  // const initialSize = getBase64Size(jpegDataURL, "KB");
 
   for (
     quality = imgConfigs.maxQuality;
@@ -166,7 +166,7 @@ export const getOrientation = (e) => {
     if (view.getUint16(offset + 2, false) <= 8) return -1;
     var marker = view.getUint16(offset, false);
     offset += 2;
-    if (marker == 0xffe1) {
+    if (marker === 0xffe1) {
       if (view.getUint32((offset += 2), false) !== 0x45786966) {
         return -1;
       }
@@ -180,7 +180,7 @@ export const getOrientation = (e) => {
           return view.getUint16(offset + i * 12 + 8, little);
         }
       }
-    } else if ((marker & 0xff00) != 0xff00) {
+    } else if ((marker & 0xff00) !== 0xff00) {
       break;
     } else {
       offset += view.getUint16(offset, false);
