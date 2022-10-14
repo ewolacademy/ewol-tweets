@@ -16,8 +16,17 @@
     rgba(250, 0, 126, 1) 80%,
     rgba(255, 0, 120, 1) 100%
   );
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .button:hover {
+  opacity: 0.6;
+}
+
+.button.loading {
+  cursor: not-allowed;
   opacity: 0.6;
 }

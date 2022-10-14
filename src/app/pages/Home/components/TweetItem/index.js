@@ -12,7 +12,10 @@ const TweetItem = ({
   createMode = false,
   created_at,
   user,
+  onChange,
   onPublish,
+  loading,
+  error,
 }) => {
   const [bodyValue, setBodyValue] = useState("");
   const [bodyFocus, setBodyFocus] = useState(false);
@@ -38,7 +41,11 @@ const TweetItem = ({
   if (!user) return;
 
   return (
-    <div className={`tweet-container${bodyFocus ? " focus" : ""}`}>
+    <div
+      className={`tweet-container${bodyFocus ? " focus" : ""} ${
+        error ? " error" : ""
+      }`}
+    >
       <div className="tweet-header">
         <img
           src={user.photo?.base64 ?? user.photo}
@@ -48,12 +55,16 @@ const TweetItem = ({
       </div>
       {createMode ? (
         <textarea
-          auto
+          disabled={loading}
           className="tweet-body"
           placeholder="Escribe algo..."
+          value={bodyValue}
           onFocus={() => setBodyFocus(true)}
           onBlur={() => setBodyFocus(false)}
-          onChange={(e) => setBodyValue(e.target.value)}
+          onChange={(e) => {
+            setBodyValue(e.target.value);
+            onChange?.(e);
+          }}
         ></textarea>
       ) : (
         <div className="tweet-body">
@@ -61,9 +72,17 @@ const TweetItem = ({
         </div>
       )}
       <div className="tweet-footer">
+        <div>{error && <span className="error-msg">{error}</span>}</div>
         {createMode ? (
-          <Button onClick={() => onPublish({ body: bodyValue, user })}>
-            Publicar
+          <Button
+            className="publish-button"
+            loading={loading}
+            onClick={async () => {
+              const success = await onPublish?.({ body: bodyValue, user });
+              if (success) setBodyValue("");
+            }}
+          >
+            {!loading ? "Publicar" : "Publicando"}
           </Button>
         ) : (
           <span>{relativeTime}</span>

@@ -7,3 +7,9 @@ html {
   width: 600px;
   margin: 110px auto;
 }
+
+@media (max-width: 768px) {
+  .tweets-list-container {
+    width: 90%;
+  }
+}

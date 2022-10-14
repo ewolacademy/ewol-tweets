@@ -24,6 +24,10 @@
   border: 3px solid rgb(169, 0, 221);
 }
 
+.tweet-container.error {
+  border: 3px solid #d50000;
+}
+
 .tweet-container:hover,
 .tweet-container.focus {
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.15);
@@ -52,6 +56,7 @@
   font-family: "Nunito";
   font-weight: 600;
   font-size: 16px;
+  color: #000;
 }
 
 .tweet-body {
@@ -70,6 +75,11 @@
   margin-top: 5px 0 10px;
 }
 
+.tweet-container textarea:disabled {
+  background-color: transparent !important;
+  cursor: default;
+}
+
 .tweet-body > span {
   font-family: "Nunito";
   font-weight: 300;
@@ -80,7 +90,7 @@
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
 }
@@ -91,4 +101,16 @@
   font-size: 12px;
   color: #555;
   margin-right: 10px;
+}
+
+.publish-button {
+  width: 150px;
+  padding: 0 !important;
+}
+
+.error-msg {
+  font-family: "Nunito";
+  font-size: 16px;
+  font-weight: 700;
+  color: #d50000;
 }

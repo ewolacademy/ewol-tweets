@@ -9,7 +9,20 @@ const TweetsList = ({ list = [], loading, error }) => {
   }
 
   if (error) {
-    return <span>Error :(</span>;
+    return (
+      <div className="msg-container">
+        <span className="message error">Error al cargar los tweets :(</span>
+        <span className="message error">{error}</span>
+      </div>
+    );
+  }
+
+  if (list.length === 0) {
+    return (
+      <div className="msg-container">
+        <span className="message">Aún no hay tweets, sé el primero!</span>
+      </div>
+    );
   }
 
   return (

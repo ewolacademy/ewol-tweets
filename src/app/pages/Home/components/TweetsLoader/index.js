@@ -1,32 +1,30 @@
-import React from 'react'
-import ContentLoader from 'react-content-loader'
+import React from "react";
+import ContentLoader from "react-content-loader";
 
-const loaderWidth = window.innerWidth > 650 ? 600 : window.innerWidth * 0.8;
-const titleWidth = loaderWidth * 0.65;
-const subTitleWidth = loaderWidth * 0.40;
+const ITEM_HEIGHT = 130;
+const ITEM_MARGIN = 20;
 
 const ProblemCardLoader = () => (
   <ContentLoader
     height={900}
-    width={loaderWidth}
+    width="100%"
     speed={3}
-    backgroundColor="#DDD"
-    foregroundColor="#BBB"
+    viewBox="0 0 600 900"
+    backgroundColor="#f2f2f2"
+    foregroundColor="#eee"
   >
-    <rect x="0" y="0" rx="0" ry="0" width={loaderWidth.toString()} height="200" /> 
-    <rect x="0" y="220" rx="0" ry="0" width={titleWidth.toString()} height="20" /> 
-    <rect x="0" y="250" rx="0" ry="0" width={subTitleWidth.toString()} height="20" />
-
-    <rect x="0" y="300" rx="0" ry="0" width={loaderWidth.toString()} height="200" /> 
-    <rect x="0" y="520" rx="0" ry="0" width={titleWidth.toString()} height="20" /> 
-    <rect x="0" y="550" rx="0" ry="0" width={subTitleWidth.toString()} height="20" />
-
-    <rect x="0" y="600" rx="0" ry="0" width={loaderWidth.toString()} height="200" /> 
-    <rect x="0" y="820" rx="0" ry="0" width={titleWidth.toString()} height="20" /> 
-    <rect x="0" y="850" rx="0" ry="0" width={subTitleWidth.toString()} height="20" />
-
-
+    {new Array(5).fill(null).map((_, index) => (
+      <rect
+        key={`key-${index}`}
+        x="0"
+        y={index * (ITEM_HEIGHT + ITEM_MARGIN)}
+        rx="25"
+        ry="25"
+        width="600"
+        height={ITEM_HEIGHT}
+      />
+    ))}
   </ContentLoader>
-)
+);
 
 export default ProblemCardLoader;

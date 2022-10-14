@@ -4,58 +4,32 @@ import TweetItem from "../TweetItem";
 import AppContext from "../../../../contexts/AppContext";
 import "./styles.css";
 import Navbar from "../../../../components/Navbar";
+import useSubscribeTweetsList from "../../hooks/useSubscribeTweetsList";
+import usePostTweet from "../../hooks/usePostTweet";
 
-const problemsMock = [
-  {
-    title: "test",
-    body: "hola",
-    created_at: new Date(),
-    user: {
-      name: "Gabio",
-      photo:
-        "https://firebasestorage.googleapis.com/v0/b/ewol-twitter.appspot.com/o/users%2FZNFyTUU2lwpaCufAGnaR%2Fprofile.jpeg?alt=media&token=19790562-e8c6-4e61-9415-4e6a0f0dc2ac",
-    },
-  },
-  {
-    title: "test",
-    body: "hola",
-    created_at: new Date(),
-    user: {
-      name: "Juan",
-      photo:
-        "https://firebasestorage.googleapis.com/v0/b/ewol-twitter.appspot.com/o/users%2FZNFyTUU2lwpaCufAGnaR%2Fprofile.jpeg?alt=media&token=19790562-e8c6-4e61-9415-4e6a0f0dc2ac",
-    },
-  },
-  {
-    title: "test",
-    body: "hola",
-    created_at: new Date(),
-    user: {
-      name: "Gabio",
-      photo:
-        "https://firebasestorage.googleapis.com/v0/b/ewol-twitter.appspot.com/o/users%2FZNFyTUU2lwpaCufAGnaR%2Fprofile.jpeg?alt=media&token=19790562-e8c6-4e61-9415-4e6a0f0dc2ac",
-    },
-  },
-  {
-    title: "test",
-    body: "hola",
-    created_at: new Date(),
-    user: {
-      name: "Gabio",
-      photo:
-        "https://firebasestorage.googleapis.com/v0/b/ewol-twitter.appspot.com/o/users%2FZNFyTUU2lwpaCufAGnaR%2Fprofile.jpeg?alt=media&token=19790562-e8c6-4e61-9415-4e6a0f0dc2ac",
-    },
-  },
-];
-
-const HomeLayout = ({ problems }) => {
+const HomeLayout = () => {
   const { data: appData } = useContext(AppContext);
+  const [tweetsList, loadingTweets, tweetsError] = useSubscribeTweetsList();
+  const [tweetPostLoading, tweetPostError, setPostTweet, setTweetPostError] =
+    usePostTweet();
+
   return (
     <>
       <Navbar />
       <div className="tweets-list-container">
-        <TweetItem createMode user={appData.user} onPublish={console.log} />
-        <TweetsList {...problems} list={problemsMock} />
+        <TweetItem
+          createMode
+          user={appData.user}
+          onChange={() => setTweetPostError(null)}
+          loading={tweetPostLoading}
+          error={tweetPostError}
+          onPublish={setPostTweet}
+        />
+        <TweetsList
+          list={tweetsList}
+          loading={loadingTweets}
+          error={tweetsError}
+        />
       </div>
     </>
   );

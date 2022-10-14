@@ -1,4 +1,11 @@
-const GradientSpinner = ({ size = 80 }) => {
+const themes = {
+  gradient: ["#fa007e", "#a900dd"],
+  white: ["#fff", "#fff"],
+};
+
+const GradientSpinner = ({ size = 80, theme, marginRight }) => {
+  const [color1, color2] = themes[theme] ?? themes["gradient"];
+
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6,6 +13,7 @@ const GradientSpinner = ({ size = 80 }) => {
       height={size}
       viewBox="0 0 100 100"
       preserveAspectRatio="xMidYMid"
+      style={{ marginRight }}
     >
       <defs>
         <filter
@@ -58,7 +66,7 @@ const GradientSpinner = ({ size = 80 }) => {
               cx="0"
               cy="0"
               r="1"
-              fill="#fa007e"
+              fill={color1}
               transform="scale(0.5)"
             ></circle>
           </g>
@@ -79,7 +87,7 @@ const GradientSpinner = ({ size = 80 }) => {
               cx="0"
               cy="0"
               r="2"
-              fill="#fa007e"
+              fill={color1}
               transform="scale(0.5)"
             ></circle>
           </g>
@@ -100,7 +108,7 @@ const GradientSpinner = ({ size = 80 }) => {
               cx="0"
               cy="0"
               r="3"
-              fill="#fa007e"
+              fill={color1}
               transform="scale(0.5)"
             ></circle>
           </g>
@@ -121,7 +129,7 @@ const GradientSpinner = ({ size = 80 }) => {
               cx="0"
               cy="0"
               r="4"
-              fill="#fa007e"
+              fill={color1}
               transform="scale(0.5)"
             ></circle>
           </g>
@@ -142,7 +150,7 @@ const GradientSpinner = ({ size = 80 }) => {
               cx="0"
               cy="0"
               r="5"
-              fill="#fa007e"
+              fill={color1}
               transform="scale(0.5)"
             ></circle>
           </g>
@@ -163,7 +171,7 @@ const GradientSpinner = ({ size = 80 }) => {
               cx="0"
               cy="0"
               r="6"
-              fill="#fa007e"
+              fill={color1}
               transform="scale(0.5)"
             ></circle>
           </g>
@@ -184,7 +192,7 @@ const GradientSpinner = ({ size = 80 }) => {
               cx="0"
               cy="0"
               r="7"
-              fill="#fa007e"
+              fill={color1}
               transform="scale(0.5)"
             ></circle>
           </g>
@@ -205,7 +213,7 @@ const GradientSpinner = ({ size = 80 }) => {
               cx="0"
               cy="0"
               r="8"
-              fill="#fa007e"
+              fill={color1}
               transform="scale(0.5)"
             ></circle>
           </g>
@@ -226,7 +234,7 @@ const GradientSpinner = ({ size = 80 }) => {
               cx="0"
               cy="0"
               r="9"
-              fill="#fa007e"
+              fill={color1}
               transform="scale(0.5)"
             ></circle>
           </g>
@@ -247,7 +255,7 @@ const GradientSpinner = ({ size = 80 }) => {
               cx="0"
               cy="0"
               r="10"
-              fill="#fa007e"
+              fill={color1}
               transform="scale(0.5)"
             ></circle>
           </g>
@@ -268,7 +276,7 @@ const GradientSpinner = ({ size = 80 }) => {
               cx="0"
               cy="0"
               r="11"
-              fill="#fa007e"
+              fill={color1}
               transform="scale(0.5)"
             ></circle>
           </g>
@@ -289,7 +297,7 @@ const GradientSpinner = ({ size = 80 }) => {
               cx="0"
               cy="0"
               r="12"
-              fill="#fa007e"
+              fill={color1}
               transform="scale(0.5)"
             ></circle>
           </g>
@@ -310,7 +318,7 @@ const GradientSpinner = ({ size = 80 }) => {
               cx="0"
               cy="0"
               r="13"
-              fill="#fa007e"
+              fill={color1}
               transform="scale(0.5)"
             ></circle>
           </g>
@@ -331,7 +339,7 @@ const GradientSpinner = ({ size = 80 }) => {
               cx="0"
               cy="0"
               r="14"
-              fill="#fa007e"
+              fill={color1}
               transform="scale(0.5)"
             ></circle>
           </g>
@@ -352,7 +360,7 @@ const GradientSpinner = ({ size = 80 }) => {
               cx="0"
               cy="0"
               r="15"
-              fill="#fa007e"
+              fill={color1}
               transform="scale(0.5)"
             ></circle>
           </g>
@@ -373,7 +381,7 @@ const GradientSpinner = ({ size = 80 }) => {
               cx="0"
               cy="0"
               r="16"
-              fill="#a900dd"
+              fill={color2}
               transform="scale(0.5)"
             ></circle>
           </g>
@@ -394,7 +402,7 @@ const GradientSpinner = ({ size = 80 }) => {
               cx="0"
               cy="0"
               r="17"
-              fill="#a900dd"
+              fill={color2}
               transform="scale(0.5)"
             ></circle>
           </g>
@@ -415,7 +423,7 @@ const GradientSpinner = ({ size = 80 }) => {
               cx="0"
               cy="0"
               r="18"
-              fill="#a900dd"
+              fill={color2}
               transform="scale(0.5)"
             ></circle>
           </g>
@@ -436,7 +444,7 @@ const GradientSpinner = ({ size = 80 }) => {
               cx="0"
               cy="0"
               r="19"
-              fill="#a900dd"
+              fill={color2}
               transform="scale(0.5)"
             ></circle>
           </g>
