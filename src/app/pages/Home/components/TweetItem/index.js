@@ -38,8 +38,6 @@ const TweetItem = ({
     };
   }, [intervalId]);
 
-  if (!user) return;
-
   return (
     <div
       className={`tweet-container${bodyFocus ? " focus" : ""} ${
@@ -48,10 +46,10 @@ const TweetItem = ({
     >
       <div className="tweet-header">
         <img
-          src={user.photo?.base64 ?? user.photo}
-          alt={`${user.name}-profile`}
+          src={user?.photo?.base64 ?? user?.photo}
+          alt={`${user?.name}-profile`}
         />
-        <span>{user.name}</span>
+        <span>{user?.name ?? "`user` es undefined"}</span>
       </div>
       {createMode ? (
         <textarea

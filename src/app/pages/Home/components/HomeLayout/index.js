@@ -1,34 +1,25 @@
-import React, { useContext } from "react";
+import React from "react";
 import TweetsList from "../TweetsList";
 import TweetItem from "../TweetItem";
-import AppContext from "../../../../contexts/AppContext";
 import "./styles.css";
 import Navbar from "../../../../components/Navbar";
-import useSubscribeTweetsList from "../../hooks/useSubscribeTweetsList";
-import usePostTweet from "../../hooks/usePostTweet";
 
 const HomeLayout = () => {
-  const { data: appData } = useContext(AppContext);
-  const [tweetsList, loadingTweets, tweetsError] = useSubscribeTweetsList();
-  const [tweetPostLoading, tweetPostError, setPostTweet, setTweetPostError] =
-    usePostTweet();
-
   return (
     <>
       <Navbar />
       <div className="tweets-list-container">
         <TweetItem
-          createMode
-          user={appData.user}
-          onChange={() => setTweetPostError(null)}
-          loading={tweetPostLoading}
-          error={tweetPostError}
-          onPublish={setPostTweet}
+          createMode={true} // esta prop hace que se ponga en modo publicar
+          // user={} data del usuario -> {id, name, photo}
+          // loading={} estado de cargando la acción de post del tweet
+          // error={} estado de error en la acción de post del tweet (debe mostrarse también si esta vacío el texto)
+          // onPublish={} se ejecuta cuando el usuario presiona el botón publicar. Pasa como args (body, user).
         />
         <TweetsList
-          list={tweetsList}
-          loading={loadingTweets}
-          error={tweetsError}
+        // list={} Lista de tweets como la trae firebase
+        // loading={} estado de cargando la lista
+        // error={} estado de error de la lista
         />
       </div>
     </>
